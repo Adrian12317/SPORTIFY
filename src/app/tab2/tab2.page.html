@@ -31,11 +31,11 @@
 
 
   <ion-header>
-    <ion-toolbar color="secondary">
+    <ion-toolbar color="Danger-shade">
       <ion-buttons slot="start">
         <ion-menu-button></ion-menu-button>
       </ion-buttons>
-      <ion-title></ion-title>
+      <ion-title>Altas de productos</ion-title>
     </ion-toolbar>
   </ion-header>
 
@@ -75,16 +75,16 @@
                <ion-input required id="precio-may" type="number"></ion-input>
            </ion-item>
            <ion-item>
-               <ion-select multiple="false" placeholder="Categoria" [(ngModel)]="categoria" (ionChange)="selectCategoria()">
+               <ion-select expand="full" multiple="false" placeholder="Categoria" [(ngModel)]="categoria" (ionChange)="selectCategoria()">
                    <ion-select-option value="ropah">Ropa para hombre</ion-select-option>
                    <ion-select-option value="ropam">Ropa para mujer</ion-select-option>
                    <ion-select-option value="tennish">Tennis para hombre</ion-select-option>
                    <ion-select-option value="tennism">Tennis para mujer</ion-select-option>
                    <ion-label>{{categoria}}</ion-label>
                </ion-select>
-           </ion-item>
+           </ion-item><br>
            <section style="text-align: center;">
-               <ion-button size="small" class="button1" (click)="altaProducto()">Submit</ion-button>
+               <ion-button  expand="full" class="button1 block" (click)="altaProducto()">Guardar</ion-button>
            </section>
          </ion-content>
        </div>

@@ -38,6 +38,7 @@ export class Tab2Page {
     this.producto = {Nombre: name, Precio: price, Url: filepath, Stock: stock, PrecioMen: pricemen, PrecioMay: pricemay};
     this.db.collection(this.categoria).add(this.producto);
     this.addProduct();
+      return {name, ...task};
   }
     showimg(event) {
     this.file = event.target.files[0];
