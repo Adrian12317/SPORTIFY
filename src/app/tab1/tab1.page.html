@@ -1,7 +1,7 @@
 <ion-app>
 <ion-menu contentId="my-content">
-<ion-header>
-  <ion-toolbar color="primary">
+<ion-header >
+  <ion-toolbar >
       <ion-title> titulo </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -31,31 +31,31 @@
 
 
 <ion-header >
-  <ion-toolbar >
+  <ion-toolbar color=danger>
     <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
+      <ion-menu-button ></ion-menu-button>
     </ion-buttons>
     <ion-title>
-      Tab One
+      Administrador
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-list *ngFor="let element of ropaH" >
+  <ion-list *ngFor="let element of ropaH">
                 <ion-item-sliding>
                     <ion-item class="ion-text-capitalize">
-                        <div class="col-1">
-                            <img class="img" src="{{element.productos.Url2}}" alt=""/>
+                        <div class="col-1 colimg">
+                            <img class="img" src="{{element.productos.Url2}}" class="images" alt=""/>
                         </div>
-                        <div class="col-2">
+                        <div class="col-2 coldesc" >
                             <ion-label>ID: {{element.id}}</ion-label>
                             <br>
                             <ion-label class="ion-text-wrap">{{element.productos.Nombre}}</ion-label>
                             <br>
                             <ion-label class="ion-text-wrap">Departamento: Ropa para hombre</ion-label>
                         </div>
-                        <div class="col-3">
+                        <div class="col-3 colprice">
                             <ion-label>Precio: ${{element.productos.Precio}}</ion-label>
                             <br/>
                             <ion-label>Menudeo: ${{element.productos.PrecioMay}}</ion-label>
@@ -66,7 +66,7 @@
                         </div>
                     </ion-item>
                     <ion-item-options side="end">
-                        <ion-item-option color="danger">
+                        <ion-item-option >
                             <ion-button fill="clear" (click)="deleterH(element.id, element.productos.Url)">
                                 <ion-icon color="light" name="trash"></ion-icon>
                             </ion-button>
@@ -74,20 +74,20 @@
                     </ion-item-options>
                 </ion-item-sliding>
             </ion-list>
-            <ion-list *ngFor="let element of ropaM" >
+            <ion-list *ngFor="let element of ropaM">
                 <ion-item-sliding>
                     <ion-item class="ion-text-capitalize">
-                        <div class="col-1">
-                            <img class="img" src="{{element.productos.Url2}}" alt="">
+                        <div class="col-1 colimg">
+                            <img class="img" src="{{element.productos.Url2}}" class="images" alt="">
                         </div>
-                        <div class="col-2">
+                        <div class="col-2 coldesc">
                             <ion-label>ID: {{element.id}}</ion-label>
                             <br>
                             <ion-label class="ion-text-wrap">{{element.productos.Nombre}}</ion-label>
                             <br>
                             <ion-label class="ion-text-wrap">Departamento: Ropa para mujer</ion-label>
                         </div>
-                        <div class="col-3">
+                        <div class="col-3 colprice">
                             <ion-label>Precio: ${{element.productos.Precio}}</ion-label>
                             <br/>
                             <ion-label>Menudeo: ${{element.productos.PrecioMay}}</ion-label>
@@ -106,21 +106,21 @@
                     </ion-item-options>
                 </ion-item-sliding>
             </ion-list>
-            <ion-list *ngFor="let element of tennisH" >
+            <ion-list *ngFor="let element of tennisH">
                 <ion-item-sliding>
                     <ion-item class="ion-text-capitalize">
-                        <div class="col-1">
-                            <img class="img" src="{{element.productos.Url2}}" alt="">
+                        <div class="col-1 colimg fondo">
+                            <img class="img" src="{{element.productos.Url2}}" class="images" alt="">
                         </div>
-                        <div class="col-2">
+                        <div class="col-2 coldesc">
                             <ion-label>ID: {{element.id}}</ion-label>
                             <br>
                             <ion-label class="ion-text-wrap">{{element.productos.Nombre}}</ion-label>
                             <br>
                             <ion-label class="ion-text-wrap">Departamento: Tennis para hombre</ion-label>
                         </div>
-                        <div class="col-3">
-                            <ion-label>Precio: ${{element.productos.Precio}}</ion-label>
+                        <div class="col-3 colprice">
+                            <ion-label fondo>Precio: ${{element.productos.Precio}}</ion-label>
                             <br/>
                             <ion-label>Menudeo: ${{element.productos.PrecioMay}}</ion-label>
                             <br/>
@@ -138,20 +138,20 @@
                     </ion-item-options>
                 </ion-item-sliding>
             </ion-list>
-            <ion-list *ngFor="let element of tennisM" >
+            <ion-list *ngFor="let element of tennisM">
                 <ion-item-sliding>
                     <ion-item class="ion-text-capitalize">
-                        <div class="col-1">
-                            <img class="img" src="{{element.productos.Url2}}" alt="">
+                        <div class="col-1 colimg">
+                            <img class="img" src="{{element.productos.Url2}}" class="images" alt="">
                         </div>
-                        <div class="col-2">
+                        <div class="col-2 coldesc">
                             <ion-label>ID: {{element.id}}</ion-label>
                             <br>
                             <ion-label class="ion-text-wrap">{{element.productos.Nombre}}</ion-label>
                             <br>
                             <ion-label class="ion-text-wrap">Departamento: Tennis para mujer</ion-label>
                         </div>
-                        <div class="col-3">
+                        <div class="col-3 colprice">
                             <ion-label>Precio: ${{element.productos.Precio}}</ion-label>
                             <br/>
                             <ion-label>Menudeo: ${{element.productos.PrecioMay}}</ion-label>
