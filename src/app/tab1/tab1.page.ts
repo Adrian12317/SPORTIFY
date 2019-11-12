@@ -99,4 +99,21 @@ export class Tab1Page implements OnInit{
     });
   }
 
+  deleterH(id,url){
+    this.db.collection('ropaH').doc(id).delete();
+    this.storage.ref(url).delete();
+   }
+  deleterM(id,url){
+    this.db.collection('ropaM').doc(id).delete();
+    this.storage.ref(url).delete();
+   }
+  deletetH(id,url){
+    this.db.collection('tennisH').doc(id).delete();
+    this.storage.ref(url).delete();
+   }
+  deletetM(id,url){
+    this.db.collection('tennisM').doc(id).delete();
+    this.storage.ref(url).delete();
+   }
+
 }
