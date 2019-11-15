@@ -39,12 +39,13 @@
       Administrador
     </ion-title>
   </ion-toolbar>
+    <ion-searchbar animated (ionChange)="search($event)" ></ion-searchbar>
 </ion-header>
 
 <ion-content>
-  <ion-list *ngFor="let element of ropaH">
+  <ion-list *ngFor="let element of ropaH | filtro: shrm">
                 <ion-item-sliding>
-                    <ion-item class="ion-text-capitalize">
+                    <ion-item (click)="openModificar(element.id)" class="ion-text-capitalize">
                         <div class="col-1 colimg">
                             <img class="img" src="{{element.productos.Url2}}" class="images" alt=""/>
                         </div>
@@ -66,7 +67,7 @@
                         </div>
                     </ion-item>
                     <ion-item-options side="end">
-                        <ion-item-option >
+                        <ion-item-option color="danger" >
                             <ion-button fill="clear" (click)="deleterH(element.id, element.productos.Url)">
                                 <ion-icon color="light" name="trash"></ion-icon>
                             </ion-button>
@@ -74,20 +75,20 @@
                     </ion-item-options>
                 </ion-item-sliding>
             </ion-list>
-            <ion-list *ngFor="let element of ropaM">
+            <ion-list *ngFor="let element of ropaM | filtro: shrm">
                 <ion-item-sliding>
-                    <ion-item class="ion-text-capitalize">
-                        <div class="col-1 colimg">
+                    <ion-item  (click)="sendLocalst(element.productos)"   class="ion-text-capitalize">
+                        <div class="col-1 colimg" (click)="openModificar(element.id)" >
                             <img class="img" src="{{element.productos.Url2}}" class="images" alt="">
                         </div>
-                        <div class="col-2 coldesc">
+                        <div class="col-2 coldesc" (click)="openModificar(element.id)" >
                             <ion-label>ID: {{element.id}}</ion-label>
                             <br>
                             <ion-label class="ion-text-wrap">{{element.productos.Nombre}}</ion-label>
                             <br>
                             <ion-label class="ion-text-wrap">Departamento: Ropa para mujer</ion-label>
                         </div>
-                        <div class="col-3 colprice">
+                        <div class="col-3 colprice" (click)="openModificar(element.id)" >
                             <ion-label>Precio: ${{element.productos.Precio}}</ion-label>
                             <br/>
                             <ion-label>Menudeo: ${{element.productos.PrecioMay}}</ion-label>
@@ -106,7 +107,7 @@
                     </ion-item-options>
                 </ion-item-sliding>
             </ion-list>
-            <ion-list *ngFor="let element of tennisH">
+            <ion-list *ngFor="let element of tennisH | filtro: shth">
                 <ion-item-sliding>
                     <ion-item class="ion-text-capitalize">
                         <div class="col-1 colimg fondo">
@@ -138,7 +139,7 @@
                     </ion-item-options>
                 </ion-item-sliding>
             </ion-list>
-            <ion-list *ngFor="let element of tennisM">
+            <ion-list *ngFor="let element of tennisM | filtro: shtm">
                 <ion-item-sliding>
                     <ion-item class="ion-text-capitalize">
                         <div class="col-1 colimg">

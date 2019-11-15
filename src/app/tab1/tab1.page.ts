@@ -1,6 +1,8 @@
 import { Component,OnInit } from '@angular/core';
 import {AngularFireStorage} from '@angular/fire/storage';
 import { AngularFirestore } from '@angular/fire/firestore';
+import {ModificarPage} from "../modificar/modificar.page";
+import {ModalController} from "@ionic/angular";
 
 
 @Component({
@@ -9,12 +11,15 @@ import { AngularFirestore } from '@angular/fire/firestore';
   styleUrls: ['tab1.page.scss']
 })
 export class Tab1Page implements OnInit{
-
   ropaH:any[];
   ropaM:any[];
   tennisH:any[];
   tennisM:any[];
-  constructor(private storage:AngularFireStorage, private db:AngularFirestore) {}
+  shrh = '';
+  shrm = '';
+  shth = '';
+  shtm = '';
+  constructor(private storage:AngularFireStorage, private db:AngularFirestore, private ModCtrl: ModalController) {}
 
   ngOnInit() {
     this.showRopaH();
@@ -115,5 +120,29 @@ export class Tab1Page implements OnInit{
     this.db.collection('tennisM').doc(id).delete();
     this.storage.ref(url).delete();
    }
+   async openModificar(id){
+    localStorage.setItem('id',id);
+    const mod =  await this.ModCtrl.create({
+      component: ModificarPage,
+    });
+    await mod.present();
 
+  }
+  sendLocalst(cliente) {
+    localStorage.setItem('img', cliente.Url2);
+    localStorage.setItem('nombre', cliente.Nombre);
+    localStorage.setItem('stock', cliente.Stock);
+    localStorage.setItem('precio', cliente.Precio);
+    localStorage.setItem('preciomen', cliente.PrecioMen);
+    localStorage.setItem('preciomay', cliente.PrecioMay);
+    localStorage.setItem('filepath', cliente.Url);
+    localStorage.setItem('cate',cliente.Categoria);
+  }
+  search(event) {
+    this.shrh = event.detail.value;
+    this.shrm = event.detail.value;
+    this.shth = event.detail.value;
+    this.shtm = event.detail.value;
+  }
 }
+

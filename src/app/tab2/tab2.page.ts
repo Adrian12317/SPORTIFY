@@ -35,7 +35,8 @@ export class Tab2Page {
     const stock = parseInt((document.getElementById('stock') as HTMLIonInputElement).value);
     const pricemen = parseInt((document.getElementById('precio-men') as HTMLIonInputElement).value);
     const pricemay = parseInt((document.getElementById('precio-may') as HTMLIonInputElement).value);
-    this.producto = {Nombre: name, Precio: price, Url: filepath, Stock: stock, PrecioMen: pricemen, PrecioMay: pricemay};
+
+    this.producto = {Nombre: name, Precio: price, Url: filepath, Stock: stock, PrecioMen: pricemen, PrecioMay: pricemay, Categoria: this.categoria};
     this.db.collection(this.categoria).add(this.producto);
     this.addProduct();
       return {name, ...task};

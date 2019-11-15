@@ -1,0 +1,41 @@
+<ion-content>
+  <ion-item>
+    <img id="output" src="{{img}}"/>
+    <input id="img" (change)="showimg($event)" type="file" accept="image/*">
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">
+      Product Name
+    </ion-label>
+    <ion-input required id="nombre" type="text" [(ngModel)]="nombre"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">
+      Stock
+    </ion-label>
+    <ion-input required id="stock" type="number" [(ngModel)]="stock"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">
+      Price
+    </ion-label>
+    <ion-input required id="precio" type="number" [(ngModel)]="precio"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">
+      Precio-menudeo
+    </ion-label>
+    <ion-input required id="precio-men" type="number" [(ngModel)]="preciomen"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">
+      Precio-mayoreo
+    </ion-label>
+    <ion-input required id="precio-may" type="number" [(ngModel)]="preciomay"></ion-input>
+  </ion-item>
+  <br>
+  <section style="text-align: center;">
+    <ion-button color=primary size="small" class="button1" expand="full" (click)="altaProducto()">Submit</ion-button>
+  </section>
+
+</ion-content>
