@@ -18,6 +18,8 @@ import {AngularFireStorageModule} from "@angular/fire/storage";
 
 import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
 import {ModificarPageModule} from "./modificar/modificar.module";
+import {RegisterModule} from "./register/register.module";
+import {LoginModule} from "./login/login.module";
 import {PipesModule} from "./filtro/pipes.module";
 
 @NgModule({
@@ -25,7 +27,7 @@ import {PipesModule} from "./filtro/pipes.module";
   entryComponents: [],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,
   AngularFireModule.initializeApp(firebaseConfig),AngularFirestoreModule,AngularFireAuthModule, AngularFireStorageModule,
-  ModificarPageModule, PipesModule],
+  ModificarPageModule, PipesModule,LoginModule,RegisterModule],
   providers: [
     StatusBar,
     SplashScreen,

@@ -27,6 +27,9 @@ export class Tab1Page implements OnInit{
     this.ShowTennisH();
     this.ShowTennisM();
   }
+
+
+
   showRopaH() {
     this.db.collection('ropaH').snapshotChanges().subscribe(data => {
       this.ropaH = data.map(e => {
@@ -35,7 +38,7 @@ export class Tab1Page implements OnInit{
           productos: e.payload.doc.data()
         };
       });
-      console.log(this.ropaH);
+
       for (const producto of this.ropaH) {
         console.log(producto.productos.Url);
         this.storage.ref(producto.productos.Url).getDownloadURL().toPromise().then((url) => {
@@ -54,9 +57,9 @@ export class Tab1Page implements OnInit{
           productos: e.payload.doc.data()
         };
       });
-      console.log(this.ropaM);
+
       for (const producto of this.ropaM) {
-        console.log(producto.productos.Url);
+
         this.storage.ref(producto.productos.Url).getDownloadURL().toPromise().then((url) => {
           producto.productos.Url2 = url;
         }).catch((error) => {
@@ -73,9 +76,9 @@ export class Tab1Page implements OnInit{
           productos: e.payload.doc.data()
         };
       });
-      console.log(this.tennisH);
+
       for (const tenni of this.tennisH) {
-        console.log(tenni.productos.Url);
+
         this.storage.ref(tenni.productos.Url).getDownloadURL().toPromise().then((url) => {
           tenni.productos.Url2 = url;
         }).catch((error) => {
@@ -92,9 +95,9 @@ export class Tab1Page implements OnInit{
           productos: e.payload.doc.data()
         };
       });
-      console.log(this.tennisM);
+
       for (const producto of this.tennisM) {
-        console.log(producto.productos.Url);
+
         this.storage.ref(producto.productos.Url).getDownloadURL().toPromise().then((url) => {
           producto.productos.Url2 = url;
         }).catch((error) => {
@@ -120,10 +123,20 @@ export class Tab1Page implements OnInit{
     this.db.collection('tennisM').doc(id).delete();
     this.storage.ref(url).delete();
    }
-   async openModificar(id){
-    localStorage.setItem('id',id);
+   async openModificar(id, nombre, img, url, precio, preciomay,preciomen, stock){
+    //localStorage.setItem('id',id);
     const mod =  await this.ModCtrl.create({
       component: ModificarPage,
+      componentProps: {
+        'id':id,
+        'nombre': nombre,
+        'img':img,
+        'url': url,
+        'precio':precio,
+        'preciomay':preciomay,
+        'preciomen':preciomen,
+        'stock':stock,
+      },
     });
     await mod.present();
 
@@ -144,5 +157,15 @@ export class Tab1Page implements OnInit{
     this.shth = event.detail.value;
     this.shtm = event.detail.value;
   }
-}
+  recargarpag(event) {
+    console.log('vamo a recargar');
 
+    setTimeout(() => {
+      this.showRopaH();
+      this.ShowRopaM();
+      this.ShowTennisH();
+      this.ShowTennisM();
+      event.target.complete();
+    }, 2000);
+  }
+}

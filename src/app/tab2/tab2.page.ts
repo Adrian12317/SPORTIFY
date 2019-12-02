@@ -4,6 +4,8 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { Observable } from "rxjs";
 import { finalize } from 'rxjs/operators';
 import { AlertController } from '@ionic/angular';
+import { BarcodeScannerOptions, BarcodeScanner } from "@ionic-native/barcode-scanner/ngx";
+
 
 
 @Component({
@@ -19,7 +21,10 @@ export class Tab2Page {
     data: any[];
     categoria: string;
 
-  constructor(private storage:AngularFireStorage, private db:AngularFirestore, private AlerCtrl: AlertController) {}
+    datocodificado: any;
+
+  constructor(private storage:AngularFireStorage, private db:AngularFirestore, private AlerCtrl: AlertController,
+  private barcodeScanner: BarcodeScanner) {}
 
   altaProducto() {
     const randomId = Math.random().toString(36).substring(2, 9);
@@ -39,6 +44,19 @@ export class Tab2Page {
     this.producto = {Nombre: name, Precio: price, Url: filepath, Stock: stock, PrecioMen: pricemen, PrecioMay: pricemay, Categoria: this.categoria};
     this.db.collection(this.categoria).add(this.producto);
     this.addProduct();
+    this.datocodificado = this.producto.Nombre;
+
+    //Generar QR
+    this.barcodeScanner.encode(this.barcodeScanner.Encode.TEXT_TYPE, this.datocodificado).then(
+        encodedData => {
+          this.datocodificado = encodedData;
+        },
+        err => {
+          console.log("Un error ha ocurrido: " + err);
+        }
+      );
+
+      console.log(this.datocodificado);
       return {name, ...task};
   }
     showimg(event) {

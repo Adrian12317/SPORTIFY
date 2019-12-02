@@ -43,9 +43,12 @@
 </ion-header>
 
 <ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="recargarpag($event)">
+   <ion-refresher-content></ion-refresher-content>
+ </ion-refresher>
   <ion-list *ngFor="let element of ropaH | filtro: shrm">
                 <ion-item-sliding>
-                    <ion-item (click)="openModificar(element.id)" class="ion-text-capitalize">
+                    <ion-item (click)="openModificar(element.id,element.productos.Nombre, element.productos.Url2,element.productos.URl,element.productos.Precio, element.productos.PrecioMay,element.productos.PrecioMen, element.productos.Stock)" class="ion-text-capitalize">
                         <div class="col-1 colimg">
                             <img class="img" src="{{element.productos.Url2}}" class="images" alt=""/>
                         </div>
@@ -171,6 +174,7 @@
                     </ion-item-options>
                 </ion-item-sliding>
             </ion-list>
+
 </ion-content>
 </div>
 </ion-app>

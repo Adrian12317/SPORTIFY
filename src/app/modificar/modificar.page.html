@@ -1,3 +1,10 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-back-button defaultHref="tabs/tab1" icon="close-circle"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
 <ion-content>
   <ion-item>
     <img id="output" src="{{img}}"/>
@@ -35,7 +42,7 @@
   </ion-item>
   <br>
   <section style="text-align: center;">
-    <ion-button color=primary size="small" class="button1" expand="full" (click)="altaProducto()">Submit</ion-button>
+      <ion-button color=primary size="small" class="button1" expand="full" (click)="altaProducto()">Actualizar</ion-button>
   </section>
 
 </ion-content>

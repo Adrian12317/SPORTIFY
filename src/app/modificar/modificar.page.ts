@@ -4,6 +4,7 @@ import {AngularFirestore} from "@angular/fire/firestore";
 import {AngularFireStorage} from "@angular/fire/storage";
 import {finalize} from "rxjs/operators";
 import {AlertController} from "@ionic/angular";
+import { NavParams } from '@ionic/angular';
 
 @Component({
   selector: 'app-modificar',
@@ -23,7 +24,17 @@ export class ModificarPage implements OnInit {
   file: any;
   data: any[];
   categoria: string;
-  constructor(private db: AngularFirestore, private storage: AngularFireStorage, private AlCtrl: AlertController) { }
+  // @input() id: string;
+  // @input() nombre: string;
+  // @input() img: any;
+  // @input() url: string;
+  // @input() precio: number;
+  // @input() preciomen: number;
+  // @input() preciomay: number;
+  // @input() stock: number;
+
+  constructor(private db: AngularFirestore, private storage: AngularFireStorage, private AlCtrl: AlertController,
+ private Nav: NavParams) { }
 
   ngOnInit() {
     this.getdata();
@@ -62,14 +73,14 @@ export class ModificarPage implements OnInit {
     localStorage.clear();
   }
   getdata() {
-this.img= localStorage.getItem('img');
-this.precio = parseInt( localStorage.getItem('precio'));
-this.nombre= localStorage.getItem('nombre');
-this.preciomen= parseInt( localStorage.getItem('preciomen'));
-this.preciomay= parseInt( localStorage.getItem('preciomay'));
-this.stock= parseInt( localStorage.getItem('stock'));
-this.categoria = localStorage.getItem('cate');
-this.id= localStorage.getItem('id');
+  this.img= this.Nav.get('img');
+  this.precio =  this.Nav.get('precio');
+  this.nombre=  this.Nav.get('nombre');
+  this.preciomen=  this.Nav.get('preciomen');
+  this.preciomay=  this.Nav.get('preciomay');
+  this.stock=  this.Nav.get('stock');
+
+  this.id= localStorage.getItem('id');
   }
   async updateProduct() {
     const alert = await this.AlCtrl.create({
