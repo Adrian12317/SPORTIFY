@@ -8,6 +8,8 @@ const routes: Routes = [
   { path: '', loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)},
   { path: 'modificar', loadChildren: './modificar/modificar.module#ModificarPageModule' },
   { path: 'registrar', loadChildren: './register/register.module#RegisterModule' },
+  { path: 'carrito', loadChildren: './carrito/carrito.module#CarritoModule' },
+  { path: 'view-carrito', loadChildren: './view-carrito/view-carrito.module#ViewCarritoPageModule' }
 
 
 

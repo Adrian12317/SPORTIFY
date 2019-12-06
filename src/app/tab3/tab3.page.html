@@ -9,21 +9,34 @@
 <ion-content>
   <div style="padding: 10px">
 
-      <!--CODIFICAR-->
-      <ion-input type="text" placeholder="Digite su texto" [(ngModel)]="datocodificado"></ion-input>
-
-      <ion-button expand="block" (click)="CodificarTexto()">Generar Código</ion-button>
-
-      <br>
 
       <!--SCANNEAR-->
       <ion-button expand="block" color="success" (click)="LeerCode()">Scannear Código</ion-button>
 
       <div *ngIf="datoscaneado">
-          <p>
-              Contenido obtenido: <b>{{ datoscaneado["text"] }}</b>
-          </p>
-      </div>
-
+        <ion-list >
+          <ion-item>
+          <div class="col-1 colimg">
+          <img class="img" src="{{Url2}}" class="images" alt=""/>
+        </div>
+        <div class="col-2 coldesc" >
+          <ion-label>ID: {{datoscaneado["text"]}}</ion-label>
+          <br>
+          <ion-label class="ion-text-wrap">Nombre:{{nombre}}</ion-label>
+          <br>
+          <ion-label class="ion-text-wrap">Departamento: Ropa para hombre</ion-label>
+        </div>
+        <div class="col-3 colprice">
+          <ion-label >Precio: ${{precio}}</ion-label>
+          <br/>
+          <ion-label>Menudeo: ${{preciomay}}</ion-label>
+          <br/>
+          <ion-label>Mayoreo: ${{preciomen}}</ion-label>
+          <br/>
+          <ion-label>Stock: {{stock}} Pza(s)</ion-label>
+        </div>
+      </ion-item>
+    </ion-list>
   </div>
+</div>
 </ion-content>

@@ -19,7 +19,9 @@ export class LoginPage implements OnInit {
 
   onSubmitLogin(){
     this.AFauth.auth.signInWithEmailAndPassword(this.email,this.password).then(user => {
-      console.log('simonsisoyauth');
+      // const ID = user["uid"];
+       console.log(user);
+         // this.db.collection('usuarios').doc(user.uid).ref.get().then
       this.router.navigate(['tabs/tab1']);
     }).catch(err => alert('Las credenciales no coinciden o no existe el usuario'));
   }

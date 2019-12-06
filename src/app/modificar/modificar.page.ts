@@ -5,6 +5,7 @@ import {AngularFireStorage} from "@angular/fire/storage";
 import {finalize} from "rxjs/operators";
 import {AlertController} from "@ionic/angular";
 import { NavParams } from '@ionic/angular';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-modificar',
@@ -34,7 +35,7 @@ export class ModificarPage implements OnInit {
   // @input() stock: number;
 
   constructor(private db: AngularFirestore, private storage: AngularFireStorage, private AlCtrl: AlertController,
- private Nav: NavParams) { }
+ private Nav: NavParams,public router:Router) { }
 
   ngOnInit() {
     this.getdata();
@@ -88,6 +89,5 @@ export class ModificarPage implements OnInit {
     });
     await alert.present();
   }
-
 
 }

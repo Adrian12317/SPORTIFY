@@ -40,11 +40,18 @@ export class Tab2Page {
     const stock = parseInt((document.getElementById('stock') as HTMLIonInputElement).value);
     const pricemen = parseInt((document.getElementById('precio-men') as HTMLIonInputElement).value);
     const pricemay = parseInt((document.getElementById('precio-may') as HTMLIonInputElement).value);
-
+    const docId = Math.random().toString(36).substring(2, 9);
     this.producto = {Nombre: name, Precio: price, Url: filepath, Stock: stock, PrecioMen: pricemen, PrecioMay: pricemay, Categoria: this.categoria};
-    this.db.collection(this.categoria).add(this.producto);
+    this.db.collection(this.categoria).doc(docId).set(this.producto).then
+    (
+      ()=>{
+
+        console.log('si ando aqui');
+      }
+
+    );
     this.addProduct();
-    this.datocodificado = this.producto.Nombre;
+    this.datocodificado = docId;
 
     //Generar QR
     this.barcodeScanner.encode(this.barcodeScanner.Encode.TEXT_TYPE, this.datocodificado).then(

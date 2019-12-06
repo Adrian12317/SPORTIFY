@@ -17,4 +17,15 @@ export class FiltroPipe implements PipeTransform {
     });
   }
 
+  consultas(arreglo: any[], Texto: string,): any[] {
+    if (Texto === '') {
+      return arreglo;
+    }
+    Texto = Texto.toLowerCase();
+    // tslint:disable-next-line:no-shadowed-variable
+    return arreglo.filter( element => {
+      return element.productos.id.toLowerCase().includes(Texto);
+    });
+  }
+
 }

@@ -1,16 +1,15 @@
-import { Component,OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {AngularFireStorage} from '@angular/fire/storage';
 import { AngularFirestore } from '@angular/fire/firestore';
-import {ModificarPage} from "../modificar/modificar.page";
-import {ModalController} from "@ionic/angular";
-
+import {Router} from "@angular/router";
 
 @Component({
-  selector: 'app-tab1',
-  templateUrl: 'tab1.page.html',
-  styleUrls: ['tab1.page.scss']
+  selector: 'app-carrito',
+  templateUrl: 'carrito.page.html',
+  styleUrls: ['carrito.page.scss']
 })
-export class Tab1Page implements OnInit{
+
+export class CarritoPage implements OnInit{
   ropaH:any[];
   ropaM:any[];
   tennisH:any[];
@@ -19,7 +18,14 @@ export class Tab1Page implements OnInit{
   shrm = '';
   shth = '';
   shtm = '';
-  constructor(private storage:AngularFireStorage, private db:AngularFirestore, private ModCtrl: ModalController) {}
+
+  cantidad = 0;
+  cant=0;
+  canti= 1;
+  canti1= 1;
+  canti2= 1;
+  canti3= 1;
+  constructor(private storage:AngularFireStorage, private db:AngularFirestore,public router:Router) {}
 
   ngOnInit() {
     this.showRopaH();
@@ -107,50 +113,6 @@ export class Tab1Page implements OnInit{
     });
   }
 
-  deleterH(id,url){
-    this.db.collection('ropaH').doc(id).delete();
-    this.storage.ref(url).delete();
-   }
-  deleterM(id,url){
-    this.db.collection('ropaM').doc(id).delete();
-    this.storage.ref(url).delete();
-   }
-  deletetH(id,url){
-    this.db.collection('tennisH').doc(id).delete();
-    this.storage.ref(url).delete();
-   }
-  deletetM(id,url){
-    this.db.collection('tennisM').doc(id).delete();
-    this.storage.ref(url).delete();
-   }
-   async openModificar(id, nombre, img, url, precio, preciomay,preciomen, stock){
-    //localStorage.setItem('id',id);
-    const mod =  await this.ModCtrl.create({
-      component: ModificarPage,
-      componentProps: {
-        'id':id,
-        'nombre': nombre,
-        'img':img,
-        'url': url,
-        'precio':precio,
-        'preciomay':preciomay,
-        'preciomen':preciomen,
-        'stock':stock,
-      },
-    });
-    await mod.present();
-
-  }
-  sendLocalst(cliente) {
-    localStorage.setItem('img', cliente.Url2);
-    localStorage.setItem('nombre', cliente.Nombre);
-    localStorage.setItem('stock', cliente.Stock);
-    localStorage.setItem('precio', cliente.Precio);
-    localStorage.setItem('preciomen', cliente.PrecioMen);
-    localStorage.setItem('preciomay', cliente.PrecioMay);
-    localStorage.setItem('filepath', cliente.Url);
-    localStorage.setItem('cate',cliente.Categoria);
-  }
   search(event) {
     this.shrh = event.detail.value;
     this.shrm = event.detail.value;
@@ -166,5 +128,66 @@ export class Tab1Page implements OnInit{
       this.ShowTennisM();
       event.target.complete();
     }, 2000);
+  }
+
+
+
+  in(nombre, precio, stock) {
+    if (stock < this.canti) {
+      this.insu();
+    } else {
+      this.db.collection('carrito').add({
+        Nombre: nombre,
+        Precio: precio,
+        Cantidad: this.canti,
+        Total: precio * this.canti
+      });
+    }
+   // console.log(id);
+  }
+  in1(nombre, precio, stock) {
+    if (stock < this.canti1) {
+      this.insu();
+    } else {
+      this.db.collection('carrito').add({
+        Nombre: nombre,
+        Precio: precio,
+        Cantidad: this.canti1,
+        Total: precio * this.canti1
+      });
+    }
+    // console.log(id);
+  }
+  in2(nombre, precio, stock) {
+    if (stock < this.canti2) {
+      this.insu();
+    } else {
+      this.db.collection('carrito').add({
+        Nombre: nombre,
+        Precio: precio,
+        Cantidad: this.canti2,
+        Total: precio * this.canti2
+      });
+    }
+    // console.log(id);
+  }
+  in3(nombre, precio, stock) {
+    if (stock < this.canti3) {
+      this.insu();
+    } else {
+      this.db.collection('carrito').add({
+        Nombre: nombre,
+        Precio: precio,
+        Cantidad: this.canti3,
+        Total: precio * this.canti3
+      });
+    }
+    // console.log(id);
+  }
+  IrViewCarrito(){
+    this.router.navigate(['view-carrito']);
+  }
+  IrCarrito(){
+    this.router.navigate(['carrito']);
   }
 }
