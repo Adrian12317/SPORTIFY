@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {AngularFireStorage} from '@angular/fire/storage';
 import { AngularFirestore } from '@angular/fire/firestore';
 import {Router} from "@angular/router";
+import {AlertController, ModalController, PopoverController} from "@ionic/angular";
 
 @Component({
   selector: 'app-carrito',
@@ -25,7 +26,8 @@ export class CarritoPage implements OnInit{
   canti1= 1;
   canti2= 1;
   canti3= 1;
-  constructor(private storage:AngularFireStorage, private db:AngularFirestore,public router:Router) {}
+  constructor(private storage:AngularFireStorage, private db:AngularFirestore,public router:Router,
+  private ModCtrl: ModalController,private Alert: AlertController) {}
 
   ngOnInit() {
     this.showRopaH();
@@ -189,5 +191,13 @@ export class CarritoPage implements OnInit{
   }
   IrCarrito(){
     this.router.navigate(['carrito']);
+  }
+
+  async insu() {
+    const alert = await this.Alert.create({
+      message:'Productos insuficientes',
+      buttons: ['OK'],
+    });
+    alert.present();
   }
 }
