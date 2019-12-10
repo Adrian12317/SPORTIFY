@@ -1,6 +1,6 @@
 <ion-header>
-  <ion-toolbar>
-  <ion-title>Carrito: ({{prod}}) Productos</ion-title>
+  <ion-toolbar color="danger">
+  <ion-title>{{prod}} Productos Agregados</ion-title>
   </ion-toolbar>
 </ion-header>
 <ion-content>
@@ -17,11 +17,40 @@
 
   </ion-list>
 
-  <ion-button expand="fill" (click)="addtable()">Comprar</ion-button>
-  <ion-button expand="fill" (click)="eliminartabla()">Borrar carrito</ion-button>
-</ion-content>
-<ion-toolbar>
-  <ion-button (click)="IrCarrito()"> <ion-icon name="home"></ion-icon> </ion-button>
-  <ion-button (click)="IrViewCarrito()"> <ion-icon name="cart"></ion-icon> </ion-button>
 
-  </ion-toolbar>
+  <div>
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <div>
+            <ion-button expand="block" (click)="addtable()">Comprar</ion-button>
+          </div>
+        </ion-col>
+        <ion-col>
+          <div>
+          <ion-button expand="block" (click)="eliminartabla()">Borrar carrito</ion-button>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    </div>
+
+
+</ion-content>
+
+<div style="background-color: #fdd100">
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <div>
+        <ion-button (click)="IrCarrito()"  expand="block"> <ion-icon name="home"></ion-icon> </ion-button>
+        </div>
+      </ion-col>
+      <ion-col>
+        <div>
+        <ion-button (click)="IrViewCarrito()" expand="block"> <ion-icon name="cart"></ion-icon> </ion-button>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  </div>

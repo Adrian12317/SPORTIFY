@@ -31,7 +31,7 @@
       Comprar
     </ion-title>
   </ion-toolbar>
-    <ion-searchbar animated (ionChange)="search($event)" ></ion-searchbar>
+    <ion-searchbar class="barra" animated (ionChange)="search($event)" ></ion-searchbar>
 </ion-header>
 
 <ion-content>
@@ -39,18 +39,25 @@
    <ion-refresher-content></ion-refresher-content>
  </ion-refresher>
   <ion-list *ngFor="let element of ropaH | filtro: shrm">
-                <ion-item-sliding>
-                    <ion-item class="ion-text-capitalize">
-                        <div class="col-1 colimg">
-                            <img class="img" src="{{element.productos.Url2}}" class="images" alt=""/>
+    <ion-item-sliding>
+          <ion-item class="ion-text-capitalize">
+                  <ion-grid>
+                    <div>
+                    <ion-row>
+                      <ion-col>
+                        <div class="colimg1">
+                            <img class="img " src="{{element.productos.Url2}}" class="images" alt=""/>
                         </div>
-                        <div class="col-2 coldesc" >
-
+                      </ion-col>
+                      <ion-col>
+                        <div class="coldesc1">
                             <ion-label class="ion-text-wrap">{{element.productos.Nombre}}</ion-label>
                             <br>
                             <ion-label class="ion-text-wrap">Departamento: Ropa para hombre</ion-label>
                         </div>
-                        <div class="col-3 colprice">
+                      </ion-col>
+                      <ion-col>
+                        <div class="colprice1">
                             <ion-label>Precio: ${{element.productos.Precio}}</ion-label>
                             <br/>
                             <ion-label>Menudeo: ${{element.productos.PrecioMay}}</ion-label>
@@ -59,27 +66,50 @@
                             <br/>
                             <ion-label>Stock: {{element.productos.Stock}} Pza(s)</ion-label>
                         </div>
-                        <div class="col-2">
-                            <ion-input [(ngModel)]="canti" type="number"></ion-input>
-                            <ion-button (click)="in(element.productos.Nombre, element.productos.Precio, element.productos.Stock)">Agregar Producto</ion-button>
+                      </ion-col>
+                    </ion-row>
+                    <ion-row>
+                      <ion-col>
+                        <div>
+                            <ion-button (click)="in(element.productos.Nombre, element.productos.Precio, element.productos.Stock)">Agregar</ion-button>
                         </div>
-                    </ion-item>
+                      </ion-col>
+                      <ion-col>
+                        <div>
+                          <ion-input [(ngModel)]="canti" type="number">En carrito: </ion-input>
+                        </div>
+                      </ion-col>
+                    </ion-row>
+                  </div>
+                </ion-grid>
+              </ion-item>
+            </ion-item-sliding>
+          </ion-list>
 
-                </ion-item-sliding>
-            </ion-list>
-            <ion-list *ngFor="let element of ropaM | filtro: shrm">
-                <ion-item-sliding>
-                    <ion-item  (click)="sendLocalst(element.productos)"   class="ion-text-capitalize">
-                        <div class="col-1 colimg" (click)="openModificar(element.id)" >
+          <ion-list *ngFor="let element of ropaM | filtro: shrm">
+            <ion-item-sliding>
+              <ion-item  (click)="sendLocalst(element.productos)"   class="ion-text-capitalize">
+
+                <ion-grid>
+                  <div>
+                  <ion-row>
+                    <ion-col>
+                        <div class="colimg1" >
                             <img class="img" src="{{element.productos.Url2}}" class="images" alt="">
                         </div>
-                        <div class="col-2 coldesc" (click)="openModificar(element.id)" >
+                      </ion-col>
+
+                      <ion-col>
+                        <div class="coldesc1">
 
                             <ion-label class="ion-text-wrap">{{element.productos.Nombre}}</ion-label>
                             <br>
                             <ion-label class="ion-text-wrap">Departamento: Ropa para mujer</ion-label>
                         </div>
-                        <div class="col-3 colprice" (click)="openModificar(element.id)" >
+                      </ion-col>
+
+                      <ion-col>
+                        <div  class="colprice1" >
                             <ion-label>Precio: ${{element.productos.Precio}}</ion-label>
                             <br/>
                             <ion-label>Menudeo: ${{element.productos.PrecioMay}}</ion-label>
@@ -88,78 +118,140 @@
                             <br/>
                             <ion-label>Stock: {{element.productos.Stock}} Pza(s)</ion-label>
                         </div>
-                        <div class="col-2">
-                            <ion-input [(ngModel)]="canti1" type="number"></ion-input>
-                            <ion-button (click)="in1(element.productos.Nombre, element.productos.Precio, element.productos.Stock)">Agregar Producto</ion-button>
+                      </ion-col>
+                    </ion-row>
+                    <ion-row>
+                      <ion-col>
+                        <div>
+                            <ion-button (click)="in1(element.productos.Nombre, element.productos.Precio, element.productos.Stock)">Agregar</ion-button>
                         </div>
-                    </ion-item>
+                      </ion-col>
+                      <ion-col>
+                        <div>
+                          <ion-input [(ngModel)]="canti1" type="number">En carrito: </ion-input>
+                        </div>
+                        </ion-col>
+                      </ion-row>
+                    </div>
+                  </ion-grid>
+                </ion-item>
 
                 </ion-item-sliding>
             </ion-list>
             <ion-list *ngFor="let element of tennisH | filtro: shth">
                 <ion-item-sliding>
                     <ion-item class="ion-text-capitalize">
-                        <div class="col-1 colimg fondo">
-                            <img class="img" src="{{element.productos.Url2}}" class="images" alt="">
-                        </div>
-                        <div class="col-2 coldesc">
-
-                            <ion-label class="ion-text-wrap">{{element.productos.Nombre}}</ion-label>
-                            <br>
-                            <ion-label class="ion-text-wrap">Departamento: Tennis para hombre</ion-label>
-                        </div>
-                        <div class="col-3 colprice">
-                            <ion-label fondo>Precio: ${{element.productos.Precio}}</ion-label>
-                            <br/>
-                            <ion-label>Menudeo: ${{element.productos.PrecioMay}}</ion-label>
-                            <br/>
-                            <ion-label>Mayoreo: ${{element.productos.PrecioMen}}</ion-label>
-                            <br/>
-                            <ion-label>Stock: {{element.productos.Stock}} Pza(s)</ion-label>
-                        </div>
-                        <div class="col-2">
-                            <ion-input [(ngModel)]="canti2" type="number"></ion-input>
-                            <ion-button (click)="in2(element.productos.Nombre, element.productos.Precio, element.productos.Stock)">Agregar Producto</ion-button>
-                        </div>
-                    </ion-item>
+                      <ion-grid>
+                        <div>
+                        <ion-row>
+                          <ion-col>
+                            <div class="colimg1">
+                              <img class="img" src="{{element.productos.Url2}}" class="images" alt="">
+                            </div>
+                          </ion-col>
+                          <ion-col>
+                            <div class="coldesc1">
+                              <ion-label class="ion-text-wrap">{{element.productos.Nombre}}</ion-label>
+                              <br>
+                              <ion-label class="ion-text-wrap">Departamento: Tennis para hombre</ion-label>
+                            </div>
+                          </ion-col>
+                          <ion-col>
+                            <div class="colprice1">
+                              <ion-label fondo>Precio: ${{element.productos.Precio}}</ion-label>
+                              <br/>
+                              <ion-label>Menudeo: ${{element.productos.PrecioMay}}</ion-label>
+                              <br/>
+                              <ion-label>Mayoreo: ${{element.productos.PrecioMen}}</ion-label>
+                              <br/>
+                              <ion-label>Stock: {{element.productos.Stock}} Pza(s)</ion-label>
+                            </div>
+                          </ion-col>
+                        </ion-row>
+                        <ion-row>
+                          <ion-col>
+                            <div>
+                              <ion-button (click)="in2(element.productos.Nombre, element.productos.Precio, element.productos.Stock)">Agregar</ion-button>
+                            </div>
+                          </ion-col>
+                          <ion-col>
+                            <div>
+                              <ion-input [(ngModel)]="canti2" type="number">En carrito: </ion-input>
+                            </div>
+                          </ion-col>
+                        </ion-row>
+                      </div>
+                      </ion-grid>
+                      </ion-item>
 
                 </ion-item-sliding>
             </ion-list>
             <ion-list *ngFor="let element of tennisM | filtro: shtm">
                 <ion-item-sliding>
                     <ion-item class="ion-text-capitalize">
-                        <div class="col-1 colimg">
+                      <ion-grid>
+                        <div>
+                        <ion-row>
+                          <ion-col>
+                            <div class="colimg1">
                             <img class="img" src="{{element.productos.Url2}}" class="images" alt="">
-                        </div>
-                        <div class="col-2 coldesc">
-
-                            <ion-label class="ion-text-wrap">{{element.productos.Nombre}}</ion-label>
-                            <br>
-                            <ion-label class="ion-text-wrap">Departamento: Tennis para mujer</ion-label>
-                        </div>
-                        <div class="col-3 colprice">
-                            <ion-label>Precio: ${{element.productos.Precio}}</ion-label>
-                            <br/>
-                            <ion-label>Menudeo: ${{element.productos.PrecioMay}}</ion-label>
-                            <br/>
-                            <ion-label>Mayoreo: ${{element.productos.PrecioMen}}</ion-label>
-                            <br/>
-                            <ion-label>Stock: {{element.productos.Stock}} Pza(s)</ion-label>
-                        </div>
-                        <div class="col-2">
-                            <ion-input [(ngModel)]="canti3" type="number"></ion-input>
-                            <ion-button (click)="in3(element.productos.Nombre, element.productos.Precio, element.productos.Stock)">Agregar Producto</ion-button>
-                        </div>
-                    </ion-item>
+                            </div>
+                          </ion-col>
+                          <ion-col>
+                            <div class="coldesc1">
+                              <ion-label class="ion-text-wrap">{{element.productos.Nombre}}</ion-label>
+                              <br>
+                              <ion-label class="ion-text-wrap">Departamento: Tennis para mujer</ion-label>
+                            </div>
+                          </ion-col>
+                          <ion-col>
+                            <div class="colprice1">
+                              <ion-label>Precio: ${{element.productos.Precio}}</ion-label>
+                              <br/>
+                              <ion-label>Menudeo: ${{element.productos.PrecioMay}}</ion-label>
+                              <br/>
+                              <ion-label>Mayoreo: ${{element.productos.PrecioMen}}</ion-label>
+                              <br/>
+                              <ion-label>Stock: {{element.productos.Stock}} Pza(s)</ion-label>
+                            </div>
+                          </ion-col>
+                        </ion-row>
+                        <ion-row>
+                          <ion-col>
+                            <div>
+                              <ion-button  (click)="in3(element.productos.Nombre, element.productos.Precio, element.productos.Stock)">Agregar</ion-button>
+                            </div>
+                          </ion-col>
+                          <ion-col>
+                            <div>
+                            <ion-input [(ngModel)]="canti3" type="number">En carrito: </ion-input>
+                            </div>
+                          </ion-col>
+                        </ion-row>
+                      </div>
+                      </ion-grid>
+                      </ion-item>
 
                 </ion-item-sliding>
             </ion-list>
+</ion-content >
 
-</ion-content>
-<ion-toolbar>
-  <ion-button (click)="IrCarrito()"> <ion-icon name="home"></ion-icon> </ion-button>
-  <ion-button (click)="IrViewCarrito()"> <ion-icon name="cart"></ion-icon> </ion-button>
+<div style="background-color: #fdd100">
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <div>
+        <ion-button (click)="IrCarrito()" expand="block"> <ion-icon name="home"></ion-icon> </ion-button>
+        </div>
+      </ion-col>
+      <ion-col>
+        <div>
+        <ion-button (click)="IrViewCarrito()" expand="block"> <ion-icon name="cart"></ion-icon> </ion-button>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  </div>
 
-  </ion-toolbar>
 </div>
 </ion-app>
